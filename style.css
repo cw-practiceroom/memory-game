@@ -1,0 +1,56 @@
+body {
+  background-image: url('https://cdn.hipwallpaper.com/i/20/11/djDYez.jpg');
+  background-color: black;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#game div {
+  border: 3px solid black;
+  border-radius: 6%;
+  width: 15%;
+  height: 200px;
+  margin: 10px;
+  display: inline-block;
+}
+
+.flipped-red {
+  background-color: rgb(201, 0, 0);
+}
+
+.flipped-blue {
+  background-color: blue;
+}
+
+.flipped-green {
+  background-color: green;
+}
+
+.flipped-yellow {
+  background-color: yellow;
+}
+
+.flipped-orange {
+  background-color: rgb(255, 153, 0);
+}
+
+.flipped-purple {
+  background-color: rgb(117, 11, 117);
+}
+
+h1 {
+  font-family: 'Mukta', sans-serif;
+  font-size: 50px;
+  text-align: center;
+  text-shadow: 0 0 10px rgb(207, 205, 255), 0 0 20px rgb(153, 160, 255),
+    0 0 30px #8b9cfd, 0 0 40px #7b78ff, 0 0 50px #5e53ff, 0 0 60px #3f32ff;
+}
+
+button {
+  position: relative;
+  left: 15px;
+  top: 10px;
+  padding: 5px 8px 5px 8px;
+  background-color: rgb(171, 174, 199);
+  font-weight: bold;
+}
