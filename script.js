@@ -77,11 +77,10 @@ function handleCardClick(event) {
     event.target.classList.contains('flipped-purple')
   )
     return;
-  // you can use event.target to see which element was clicked
-  console.log('you just clicked', event.target);
-  // first or second click indicator
+
   score++;
-  console.log(score);
+  document.querySelector('span').innerText = score;
+
   if (i === 0) {
     // ◼ first click ◼
     // give color
@@ -96,13 +95,13 @@ function handleCardClick(event) {
     event.target.classList.add(`flipped-${event.target.classList.item(0)}`);
     // store click to compare
     secondColor = event.target.classList.item(0);
+
     // compare colors
     if (firstColor !== secondColor) {
       cantClick = true;
       setTimeout(function () {
-        //
         // ◼ removing classes if colors don't match ◼
-        //
+
         // remove first color class
         let firstSelection = document.getElementsByClassName(`${firstColor}`);
         for (let i = 0; i < firstSelection.length; i++) {

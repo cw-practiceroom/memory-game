@@ -46,6 +46,14 @@ h1 {
     0 0 30px #8b9cfd, 0 0 40px #7b78ff, 0 0 50px #5e53ff, 0 0 60px #3f32ff;
 }
 
+h3 {
+  font-family: 'Mukta', sans-serif;
+  font-size: 30px;
+  text-align: center;
+  text-shadow: 0 0 10px rgb(207, 205, 255), 0 0 20px rgb(153, 160, 255),
+    0 0 30px #8b9cfd, 0 0 40px #7b78ff, 0 0 50px #5e53ff, 0 0 60px #3f32ff;
+}
+
 button {
   position: relative;
   left: 15px;
