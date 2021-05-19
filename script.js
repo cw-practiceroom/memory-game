@@ -1,4 +1,10 @@
 const gameContainer = document.getElementById('game');
+let firstColor = null;
+let secondColor = null;
+let flippedCards = 0;
+let score = 0;
+let cantClick = false;
+let i = 0;
 
 const COLORS = [
   'red',
@@ -61,76 +67,70 @@ function createDivsForColors(colorArray) {
 
 // TODO: Implement this function!
 function handleCardClick(event) {
+  if (cantClick) return;
+  if (
+    event.target.classList.contains('flipped-red') ||
+    event.target.classList.contains('flipped-blue') ||
+    event.target.classList.contains('flipped-green') ||
+    event.target.classList.contains('flipped-yellow') ||
+    event.target.classList.contains('flipped-orange') ||
+    event.target.classList.contains('flipped-purple')
+  )
+    return;
   // you can use event.target to see which element was clicked
   console.log('you just clicked', event.target);
   // first or second click indicator
-  
-
-  if (
-    !event.target.classList.contains('flipped-red') &&
-    !event.target.classList.contains('flipped-blue') &&
-    !event.target.classList.contains('flipped-green') &&
-    !event.target.classList.contains('flipped-yellow') &&
-    !event.target.classList.contains('flipped-orange') &&
-    !event.target.classList.contains('flipped-purple')
-  ) {
-    if (i === 0) {
-      // first click
-      // give color
-      event.target.classList.add(`flipped-${event.target.classList.item(0)}`);
-      // store click to compare
-      let firstColor = event.target.classList.item(0);
-      console.log(`First color: ${firstColor}`);
-      i++;
-      console.log(`i = ${i}`);
-    } else {
-      // second click
-      // give color
-      event.target.classList.add(`flipped-${event.target.classList.item(0)}`);
-      // store click to compare
-      let secondColor = event.target.classList.item(0);
-      console.log(secondColor);
-      // compare colors
-      if (firstColor !== secondColor) {
-        setTimeout(function () {
-          console.log('Not the same!')
-          //
-          // Removing classes if colors don't match
-          //
-          // remove first color class
-          let firstSelection = document.getElementsByClassName('firstColor');
-          console.log(`first selection: ${firstSelection}`);
-          for (let i = 0; i < firstSelection.length; i++) {
-            firstSelection[i].classList.remove(`flipped-${firstColor}`);
-          }
-          // remove second color class
-          let secondSelection = document.getElementsByClassName('secondColor');
-          console.log(`second selection: ${secondSelection}`);
-          for (let i = 0; i < secondSelection.length; i++) {
-            secondSelection[i].classList.remove(`flipped-${secondColor}`);
-          }
-        }, 1000);
-      }
-      i--;
-      console.log(`i = ${i}`);
-    }
+  score++;
+  console.log(score);
+  if (i === 0) {
+    // ◼ first click ◼
+    // give color
+    event.target.classList.add(`flipped-${event.target.classList.item(0)}`);
+    // store click to compare
+    firstColor = event.target.classList.item(0);
+    i++;
+    console.log(`i = ${i}`);
   } else {
+    // ◼ second click ◼
+    // give color
+    event.target.classList.add(`flipped-${event.target.classList.item(0)}`);
+    // store click to compare
+    secondColor = event.target.classList.item(0);
+    // compare colors
+    if (firstColor !== secondColor) {
+      cantClick = true;
+      setTimeout(function () {
+        //
+        // ◼ removing classes if colors don't match ◼
+        //
+        // remove first color class
+        let firstSelection = document.getElementsByClassName(`${firstColor}`);
+        for (let i = 0; i < firstSelection.length; i++) {
+          firstSelection[i].classList.remove(`flipped-${firstColor}`);
+        }
+
+        // remove second color class
+        let secondSelection = document.getElementsByClassName(`${secondColor}`);
+        for (let i = 0; i < secondSelection.length; i++) {
+          secondSelection[i].classList.remove(`flipped-${secondColor}`);
+        }
+
+        cantClick = false;
+      }, 1000);
+    } else flippedCards += 2;
+    i--;
+
+    // game over alert
+    if (flippedCards === COLORS.length) {
+      setTimeout(function () {
+        alert(
+          `You win!!!
+Score: ${score}`
+        );
+      }, 50);
+    }
   }
 }
 
 // when the DOM loads
-
-// Set i to 0 (i toggles between 0 and 1, indicating if it's the first or second click)
-let i = 0;
 createDivsForColors(shuffledColors);
-
-// (written to remove colors from displaying)
-// for (let i = 0; i < shuffledColors.length; i++) {
-//   const tiles = document.querySelector(`div[class="${shuffledColors[i]}"]`);
-//   tiles.classList.remove(shuffledColors[i]);
-// }
-
-// new game
-// const newGame = document.querySelector('#reset');
-
-// newGame.addEventListener('click', function () {});
