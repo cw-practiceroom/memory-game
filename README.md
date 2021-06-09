@@ -2,7 +2,7 @@
 
 Memory game for Springboard curriculum.
 
-### Functionality to be added: 
+### To be implemented
 
 Save High Score
 
