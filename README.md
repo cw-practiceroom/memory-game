@@ -3,5 +3,5 @@
 Memory game for Springboard curriculum.
 
 Functionality to be added: 
-  > Save high score
-  > Replay game
+  Save high score
+  Replay game
