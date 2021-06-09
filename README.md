@@ -1,3 +1,6 @@
 # memory-game
 
-⚠ currently in progress ⚠
+Memory game for Springboard curriculum.
+
+Functionality to be added: 
+  > Save high score
